@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:note/views/Home.dart';
 
 void main() {
-  runApp(const NotesApp());
+  runApp(TokuApp());
 }
 
-class NotesApp extends StatelessWidget {
-  const NotesApp({super.key});
+class TokuApp extends StatelessWidget {
+  const TokuApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
+      home: NotesViews(),
     );
   }
 }
