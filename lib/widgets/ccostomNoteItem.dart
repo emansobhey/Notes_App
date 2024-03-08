@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class NoteItem extends StatelessWidget {
@@ -27,7 +26,7 @@ class NoteItem extends StatelessWidget {
             child: Text(
               'Hi eman djfjnd nbnusf bfsuhaduh bfabuhughuh bsfuhu',
               style:
-                  TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 20),
+                  TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 18),
             ),
           ),
           trailing: IconButton(

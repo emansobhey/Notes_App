@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note/views/Home.dart';
+import 'package:note/views/Notes_view.dart';
 
 void main() {
   runApp(TokuApp());

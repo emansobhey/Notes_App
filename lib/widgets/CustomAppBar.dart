@@ -9,16 +9,16 @@ class CustomAppBar extends StatelessWidget {
     return Row(
       children: [
         Container(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 15, left: 15),
+          child: const Padding(
+            padding: EdgeInsets.only(top: 15, left: 15),
             child: Text(
               'Notes ',
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
           ),
         ),
-        Spacer(),
-        CostomSearchIcon()
+        const Spacer(),
+        const CostomSearchIcon()
       ],
     );
   }
