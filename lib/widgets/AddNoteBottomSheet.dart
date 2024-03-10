@@ -1,42 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:note/widgets/customer_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:note/cubits/cubit/add_note_cubit.dart';
+import 'package:note/widgets/Add_note_form.dart';
 import 'package:note/widgets/customer_textFiles.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 32,
-            ),
-            CustomTextField(
-              hintText: 'Title',
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomTextField(
-              hintText: 'Content',
-              MaxLines: 5,
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            CustomButon(
-              text: 'Add',
-            ),
-            SizedBox(
-              height: 25,
-            ),
-          ],
-        ),
-      ),
-    );
+    return BlocProvider(
+        create: (context) => AddNoteCubit(),
+        child: BlocListener<AddNoteCubit, AddNoteState>(
+            listener: (context, state) {
+              if (state is AddNoteFailure) {
+                print('Failure ${state.errMassage}');
+              }
+              if (state is AddNotesuccess) {
+                Navigator.pop(context);
+              }
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: SingleChildScrollView(child: const AddNoteForm()),
+            )));
   }
 }

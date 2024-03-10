@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:note/const.dart';
 
@@ -5,21 +7,28 @@ class CustomTextField extends StatelessWidget {
   CustomTextField(
       {required this.hintText,
       this.inputType,
-      this.onChanged,
       this.obscureText = false,
-      this.MaxLines = 1});
-  Function(String)? onChanged;
+      this.MaxLines = 1,
+      this.onSaved});
   String hintText;
   final int MaxLines;
+  final void Function(String?)? onSaved;
   TextInputType? inputType;
   bool? obscureText;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onSaved: onSaved,
+      validator: (Value) {
+        if (Value?.isEmpty ?? true) {
+          return 'Filed is Reguire';
+        } else {
+          return null;
+        }
+      },
       maxLines: MaxLines,
       cursorColor: kPrimaryColor,
       obscureText: obscureText!,
-      onChanged: onChanged,
       keyboardType: inputType,
       decoration: InputDecoration(
         hintText: hintText,
