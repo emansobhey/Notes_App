@@ -40,7 +40,9 @@ class NoteItem extends StatelessWidget {
               ),
             ),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+              showDeleteConfirmationDialog(context);
+              },
               icon: const Icon(
                 Icons.delete,
                 color: Colors.black,
@@ -58,6 +60,34 @@ class NoteItem extends StatelessWidget {
           )
         ]),
       ),
+    );
+
+  }
+  
+  void showDeleteConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text('Delete Note'),
+          content: Text('Are you sure you want to delete this Note?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(); // Close the dialog
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                note.delete();
+                Navigator.of(dialogContext).pop(); // Close the dialog
+              },
+              child: Text('Delete'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
