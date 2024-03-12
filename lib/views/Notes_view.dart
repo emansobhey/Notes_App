@@ -11,6 +11,7 @@ class NotesViews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffA0C3D2),
         onPressed: () {
           showModalBottomSheet(
               isScrollControlled: true,

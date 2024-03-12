@@ -13,7 +13,7 @@ class NoteItem extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return  EditNoteView(
+            return EditNoteView(
               note: note,
             );
           },
@@ -59,7 +59,7 @@ class NoteItem extends StatelessWidget {
             child: Text(
               note.date,
               style:
-                  TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 18),
+                  TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 12),
             ),
           )
         ]),
@@ -88,7 +88,7 @@ class NoteItem extends StatelessWidget {
                 note.delete();
                 BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 Navigator.of(dialogContext).pop();
- // Close the dialog
+                // Close the dialog
               },
               child: Text('Delete'),
             ),
