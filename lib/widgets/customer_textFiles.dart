@@ -9,12 +9,13 @@ class CustomTextField extends StatelessWidget {
       this.inputType,
       this.obscureText = false,
       this.MaxLines = 1,
-      this.onSaved});
+      this.onSaved, this.onChanged});
   String hintText;
   final int MaxLines;
   final void Function(String?)? onSaved;
   TextInputType? inputType;
   bool? obscureText;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -26,6 +27,7 @@ class CustomTextField extends StatelessWidget {
           return null;
         }
       },
+      onChanged:onChanged ,
       maxLines: MaxLines,
       cursorColor: kPrimaryColor,
       obscureText: obscureText!,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note/cubits/cubit/notes_cubit.dart';
 import 'package:note/models/note_model.dart';
 import 'package:note/views/Edit_note_view.dart';
 
@@ -11,7 +13,9 @@ class NoteItem extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return const EditNoteView();
+            return  EditNoteView(
+              note: note,
+            );
           },
         ));
       },
@@ -41,7 +45,7 @@ class NoteItem extends StatelessWidget {
             ),
             trailing: IconButton(
               onPressed: () {
-              showDeleteConfirmationDialog(context);
+                showDeleteConfirmationDialog(context);
               },
               icon: const Icon(
                 Icons.delete,
@@ -61,14 +65,15 @@ class NoteItem extends StatelessWidget {
         ]),
       ),
     );
-
   }
-  
+
   void showDeleteConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
           title: Text('Delete Note'),
           content: Text('Are you sure you want to delete this Note?'),
           actions: [
@@ -81,7 +86,9 @@ class NoteItem extends StatelessWidget {
             TextButton(
               onPressed: () {
                 note.delete();
-                Navigator.of(dialogContext).pop(); // Close the dialog
+                BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                Navigator.of(dialogContext).pop();
+ // Close the dialog
               },
               child: Text('Delete'),
             ),
