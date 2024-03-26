@@ -7,6 +7,7 @@ import 'package:note/cubits/cubit/notes_cubit.dart';
 import 'package:note/models/note_model.dart';
 import 'package:note/simple_bloc.dart';
 import 'package:note/views/Notes_view.dart';
+import 'package:note/views/welome.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -25,8 +26,8 @@ class NoteApp extends StatelessWidget {
       create: (context) => NotesCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
-        home: const NotesViews(),
+        theme: ThemeData(brightness: Brightness.light, fontFamily: 'Poppins'),
+        home: WelcomePage(),
       ),
     );
   }

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:note/widgets/costomSearch.dart';
 
 class CustomAppBar extends StatelessWidget {
-  CustomAppBar({super.key, required this.text, required this.icon, this.onPressed});
+  CustomAppBar(
+      {super.key, required this.text, required this.icon, this.onPressed});
   final String text;
   final void Function()? onPressed;
 
@@ -15,10 +16,20 @@ class CustomAppBar extends StatelessWidget {
           padding: const EdgeInsets.only(top: 15, left: 15),
           child: Text(
             text,
-            style: const TextStyle(color: Colors.white, fontSize: 25),
+            style: const TextStyle(
+                color: Colors.black,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold,
+                fontSize: 25),
           ),
         ),
-        const Text('            '),
+        const Text(
+          '            ',
+          style: TextStyle(
+              color: Colors.black,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.bold),
+        ),
         const Spacer(),
         CostomIcon(
           onPressed: onPressed,
